@@ -1,0 +1,28 @@
+<section id="sobre">
+  <h2>Sobre mim</h2>
+  <p>Sou desenvolvedor(a) front-end em formação, apaixonado(a) por tecnologia e criação de interfaces.</p>
+</section>
+
+<section id="projetos">
+  <h2>Projetos</h2>
+
+  <article class="card">
+    <h3>Projeto 1</h3>
+    <p>Landing page responsiva usando HTML e CSS.</p>
+  </article>
+
+  <article class="card">
+    <h3>Projeto 2</h3>
+    <p>Lista de tarefas com JavaScript.</p>
+  </article>
+
+</section>
+
+<aside>
+  <h3>Habilidades</h3>
+  <ul>
+    <li>HTML5</li>
+    <li>CSS3</li>
+    <li>JavaScript</li>
+  </ul>
+</aside>
