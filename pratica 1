@@ -1,28 +1,103 @@
-<section id="sobre">
-  <h2>Sobre mim</h2>
-  <p>Sou desenvolvedor(a) front-end em formação, apaixonado(a) por tecnologia e criação de interfaces.</p>
-</section>
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Calculadora de IMC</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
 
-<section id="projetos">
-  <h2>Projetos</h2>
+    <div class="container">
+        <h1>Calculadora de IMC</h1>
 
-  <article class="card">
-    <h3>Projeto 1</h3>
-    <p>Landing page responsiva usando HTML e CSS.</p>
-  </article>
+        <label>Peso (kg):</label>
+        <input type="number" id="peso" placeholder="Ex: 70">
 
-  <article class="card">
-    <h3>Projeto 2</h3>
-    <p>Lista de tarefas com JavaScript.</p>
-  </article>
+        <label>Altura (m):</label>
+        <input type="number" id="altura" placeholder="Ex: 1.70">
 
-</section>
+        <button onclick="calcularIMC()">Calcular</button>
 
-<aside>
-  <h3>Habilidades</h3>
-  <ul>
-    <li>HTML5</li>
-    <li>CSS3</li>
-    <li>JavaScript</li>
-  </ul>
-</aside>
+        <p id="resultado"></p>
+        <p id="classificacao"></p>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
+body {
+    font-family: Arial, sans-serif;
+    background: linear-gradient(135deg, #4facfe, #00f2fe);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.container {
+    background: white;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+    text-align: center;
+    width: 300px;
+}
+
+h1 {
+    margin-bottom: 20px;
+}
+
+input {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+}
+
+button {
+    background: #4facfe;
+    color: white;
+    border: none;
+    padding: 10px;
+    width: 100%;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+button:hover {
+    background: #00c6ff;
+}
+
+p {
+    margin-top: 15px;
+    font-weight: bold;
+}
+
+function calcularIMC() {
+    let peso = parseFloat(document.getElementById("peso").value);
+    let altura = parseFloat(document.getElementById("altura").value);
+
+    let resultado = document.getElementById("resultado");
+    let classificacao = document.getElementById("classificacao");
+
+    if (peso <= 0 || altura <= 0 || isNaN(peso) || isNaN(altura)) {
+        resultado.innerText = "Por favor, insira valores válidos.";
+        classificacao.innerText = "";
+        return;
+    }
+
+    let imc = peso / (altura * altura);
+    resultado.innerText = "Seu IMC é: " + imc.toFixed(2);
+
+    if (imc < 18.5) {
+        classificacao.innerText = "Abaixo do peso";
+    } else if (imc < 24.9) {
+        classificacao.innerText = "Peso normal";
+    } else if (imc < 29.9) {
+        classificacao.innerText = "Sobrepeso";
+    } else {
+        classificacao.innerText = "Obesidade";
+    }
+}
