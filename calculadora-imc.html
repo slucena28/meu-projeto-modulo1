@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Calculadora de IMC</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #4facfe, #00f2fe);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .container {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+            text-align: center;
+            width: 300px;
+        }
+
+        h1 {
+            margin-bottom: 20px;
+        }
+
+        input {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 8px;
+            border: 1px solid #ccc;
+        }
+
+        button {
+            background: #4facfe;
+            color: white;
+            border: none;
+            padding: 10px;
+            width: 100%;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        button:hover {
+            background: #00c6ff;
+        }
+
+        p {
+            margin-top: 15px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Calculadora de IMC</h1>
+
+        <label>Peso (kg):</label>
+        <input type="number" id="peso" placeholder="Ex: 70">
+
+        <label>Altura (m):</label>
+        <input type="number" id="altura" placeholder="Ex: 1.70">
+
+        <button onclick="calcularIMC()">Calcular</button>
+
+        <p id="resultado"></p>
+        <p id="classificacao"></p>
+    </div>
+
+    <script>
+        function calcularIMC() {
+            let peso = parseFloat(document.getElementById("peso").value);
+            let altura = parseFloat(document.getElementById("altura").value);
+
+            let resultado = document.getElementById("resultado");
+            let classificacao = document.getElementById("classificacao");
+
+            if (peso <= 0 || altura <= 0 || isNaN(peso) || isNaN(altura)) {
+                resultado.innerText = "Por favor, insira valores válidos.";
+                classificacao.innerText = "";
+                return;
+            }
+
+            let imc = peso / (altura * altura);
+            resultado.innerText = "Seu IMC é: " + imc.toFixed(2);
+
+            if (imc < 18.5) {
+                classificacao.innerText = "Abaixo do peso";
+            } else if (imc < 24.9) {
+                classificacao.innerText = "Peso normal";
+            } else if (imc < 29.9) {
+                classificacao.innerText = "Sobrepeso";
+            } else {
+                classificacao.innerText = "Obesidade";
+            }
+        }
+    </script>
+
+</body>
+</html>
+
